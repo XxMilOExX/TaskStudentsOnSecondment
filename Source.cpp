@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 #include <iomanip>
-#include <Windows.h>
+#include <windows.h>
+#include <fstream>
 
 using namespace std;
 
@@ -46,12 +47,38 @@ public:
 	StudensGrand&operator= (StudensGrand d_o);
 };
 
+class SecondadStudens {
 
+private:
+    int pp;
+    string secondName;
+    Exam exam;
+    Cred cred;
+
+public:
+    SecondadStudens();
+    SecondadStudens(int, string, float, Exam, Cred, string);
+    ~SecondadStudens();
+    void Print();
+    void DataEntry(int, string, float, Exam, Cred, string);
+
+    int Getpp() { return pp; };
+    string GetsecondName() { return secondName; };
+    Exam Getexam() { return exam; };
+    Cred GetCred() { return cred; };
+
+    StudensGrand&operator= (StudensGrand d_o);
+};
 
 
 int main()
 {
-    setlocale(LC_ALL, "Rus");
+    string path = "File.txt";
+    string sPath = "File2.txt";
+    fstream fs;
+    fs.open(path, fstream::in | fstream::out | fstream::app);
+    fs.open(sPath, fstream::in | fstream::out | fstream::app);
+    setlocale(LC_ALL, "RUSSIAN");
 
 	cout << "Нажмите соответствующую клавишу:" << endl;
 	cout << "1 – ввод информации" << endl;
@@ -75,10 +102,12 @@ int main()
 
 		switch (selectedInputPoint) {
 		case 1:
+            string keyboardInput;
+            cin >> keyboardInput;
 
 			break;
 		case 2:
-
+            string fileInput;
 			break;
 		}
 		break;
